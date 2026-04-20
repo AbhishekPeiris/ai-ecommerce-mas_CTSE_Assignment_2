@@ -1,131 +1,149 @@
-# Create Python virtual environment
+# AI Smart E-Commerce Multi-Agent System (MAS)
+
+## Overview
+
+This project implements a **Multi-Agent System (MAS)** for intelligent product recommendations using a structured architecture with agents, tools, shared state, and workflows.
+
+The system processes user queries and returns the most suitable product based on:
+
+- Budget
+- Category (Laptop / Phone)
+- Keywords (use case, features)
+- Dataset-based filtering and scoring
+
+---
+
+## Key Features
+
+- Multi-Agent Architecture
+- Custom Tool-based Execution
+- Shared Global State Management
+- Query Parsing and Validation
+- Ranking & Recommendation Engine
+- Logging & Error Handling
+- Fully Local Execution (No paid APIs required)
+- Extensible for LLM (Ollama ready)
+
+---
+
+## Architecture
+
+### Agents
+
+- **Coordinator Agent** → Final response generation
+- **Delegator Agent** → Task planning
+- **Search Agent** → Product retrieval
+- **Analysis Agent** → Product comparison
+
+### Tools
+
+- Formatter Tool
+- Task Planner Tool
+- Product Search Tool
+- Comparison Tool
+
+### Flow
+
+1. User enters query
+2. Query is parsed
+3. Delegator creates task plan
+4. Search Agent retrieves products
+5. Analysis Agent selects best product
+6. Coordinator formats output
+
+---
+
+## Project Structure
+
+```bash
+app/
+├── agents/
+├── tools/
+├── services/
+├── state/
+├── crews/
+├── llm/
+├── utils/
+├── data/
+└── main.py
+
+configs/
+logs/
+scripts/
+tests/
+
+Setup Instructions
+1. Create Virtual Environment
 python -m venv venv
+2. Activate Environment
 
-# Active Environment
+PowerShell:
+
 .\venv\Scripts\Activate.ps1
+3. Install Dependencies
+pip install -r requirements.txt
+Load Sample Data
+python scripts/load_data.py
+Run the Application
+python scripts/run_app.py
 
-# Install Command
-pip install crewai pydantic python-dotenv pytest
+OR
 
-# Start manually
-ollama serve
+python app/main.py
+Example Queries
+Best laptop under 150000
+Student laptop for coding
+Best phone under 100000
+Logs
 
-# Ollama Installation
-ollama pull llama3
+Logs are stored in:
 
-# To run the model, use the command
-ollama run llama3
+logs/system.log
+logs/errors.log
+Run Tests
+python scripts/run_tests.py
+Evaluation
 
-# Check litning ports
-netstat -ano | findstr 11434
+Includes:
 
-# Kill ports
-taskkill /PID 25036 /F
-taskkill /IM ollama.exe /F
+Unit tests
+Integration tests
+End-to-end tests
+Recommendation quality evaluation
+Future Improvements
+API integration (real product data)
+Web UI (Streamlit / React)
+LLM-powered reasoning (Ollama)
+Multi-category expansion
+Notes
+Fully local system (no API keys required)
+Designed for academic MAS assignment
+Clean modular architecture
 
-# Folder Structure
-AI-ECOMMERCE-MAS/
 
-├── app/
-│   ├── agents/
-│   │   ├── coordinator/
-│   │   │   ├── coordinator_agent.py
-│   │   │   ├── coordinator_prompt.py
-│   │   │   └── coordinator_config.py
-│   │   │
-│   │   ├── delegator/
-│   │   │   ├── delegator_agent.py
-│   │   │   ├── delegator_prompt.py
-│   │   │   └── delegator_config.py
-│   │   │
-│   │   ├── search/
-│   │   │   ├── search_agent.py
-│   │   │   ├── search_prompt.py
-│   │   │   └── search_config.py
-│   │   │
-│   │   ├── analysis/
-│   │   │   ├── analysis_agent.py
-│   │   │   ├── analysis_prompt.py
-│   │   │   └── analysis_config.py
-│   │   │
-│   │   └── __init__.py
-│   │
-│   ├── tools/
-│   │   ├── coordinator/
-│   │   │   └── formatter_tool.py
-│   │   │
-│   │   ├── delegator/
-│   │   │   └── task_planner_tool.py
-│   │   │
-│   │   ├── search/
-│   │   │   └── product_search_tool.py
-│   │   │
-│   │   ├── analysis/
-│   │   │   └── comparison_tool.py
-│   │   │
-│   │   └── __init__.py
-│   │
-│   ├── crews/
-│   │   ├── ecommerce_crew.py
-│   │   ├── workflow.py
-│   │   └── task_definitions.py
-│   │
-│   ├── state/
-│   │   ├── global_state.py
-│   │   ├── state_manager.py
-│   │   └── state_schema.py
-│   │
-│   ├── data/
-│   │   ├── laptops.json
-│   │   └── phones.json   # future extension
-│   │
-│   ├── llm/
-│   │   ├── ollama_client.py
-│   │   └── model_config.py
-│   │
-│   ├── services/
-│   │   ├── query_parser.py
-│   │   ├── budget_extractor.py
-│   │   └── validator.py
-│   │
-│   ├── utils/
-│   │   ├── logger.py
-│   │   ├── error_handler.py
-│   │   ├── constants.py
-│   │   └── helpers.py
-│   │
-│   └── main.py
-│
-├── tests/
-│   ├── unit/
-│   │   ├── test_tools.py
-│   │   ├── test_agents.py
-│   │   └── test_state.py
-│   │
-│   ├── integration/
-│   │   └── test_workflow.py
-│   │
-│   ├── evaluation/
-│   │   ├── test_recommendation_quality.py
-│   │   └── llm_judge.py
-│   │
-│   └── test_end_to_end.py
-│
-├── logs/
-│   ├── system.log
-│   └── errors.log
-│
-├── configs/
-│   ├── app_config.yaml
-│   ├── agent_config.yaml
-│   └── logging_config.yaml
-│
-├── scripts/
-│   ├── run_app.py
-│   ├── run_tests.py
-│   └── load_data.py
-│
-├── .env
-├── requirements.txt
-├── README.md
-└── .gitignore
+---
+
+# TESTS
+
+---
+
+## `tests/unit/test_tools.py`
+
+```python
+from app.tools.search.product_search_tool import ProductSearchTool
+
+
+def test_product_search_basic(tmp_path):
+    data = [
+        {"category": "laptop", "price": 100000, "brand": "A"},
+        {"category": "laptop", "price": 200000, "brand": "B"},
+    ]
+
+    file = tmp_path / "data.json"
+    import json
+    file.write_text(json.dumps(data))
+
+    tool = ProductSearchTool(str(file))
+    results = tool.search(category="laptop", budget=150000)
+
+    assert len(results) == 1
