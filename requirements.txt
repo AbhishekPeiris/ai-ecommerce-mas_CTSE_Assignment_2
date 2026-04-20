@@ -1,0 +1,16 @@
+# Core AI Framework
+crewai
+
+# LLM Integration
+ollama
+
+# Data validation
+pydantic
+
+# Environment variables
+python-dotenv
+
+# Testing
+pytest
+
+
