@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from app.agents.search.search_config import SEARCH_CONFIG
-from app.agents.search.search_prompt import SEARCH_SYSTEM_PROMPT
+from app.agents.search_agent.search_config import SEARCH_CONFIG
+from app.agents.search_agent.search_prompt import SEARCH_SYSTEM_PROMPT
 from app.tools.search.product_search_tool import ProductSearchTool
 from app.utils.logger import get_logger, log_agent_event
 

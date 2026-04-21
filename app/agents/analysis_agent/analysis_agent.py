@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from app.agents.analysis.analysis_config import ANALYSIS_CONFIG
-from app.agents.analysis.analysis_prompt import ANALYSIS_SYSTEM_PROMPT
+from app.agents.analysis_agent.analysis_config import ANALYSIS_CONFIG
+from app.agents.analysis_agent.analysis_prompt import ANALYSIS_SYSTEM_PROMPT
 from app.tools.analysis.comparison_tool import ComparisonTool
 from app.utils.logger import get_logger, log_agent_event
 

@@ -12,7 +12,11 @@
     "battery_mah": 5000,
     "camera_mp": 50,
     "rating": 4.4,
-    "use_case": ["student", "daily", "camera"]
+    "use_case": [
+      "student",
+      "daily",
+      "camera"
+    ]
   },
   {
     "id": 102,
@@ -27,7 +31,11 @@
     "battery_mah": 5000,
     "camera_mp": 108,
     "rating": 4.3,
-    "use_case": ["daily", "camera", "budget"]
+    "use_case": [
+      "daily",
+      "camera",
+      "budget"
+    ]
   },
   {
     "id": 103,
@@ -42,36 +50,10 @@
     "battery_mah": 5000,
     "camera_mp": 50,
     "rating": 4.6,
-    "use_case": ["student", "daily", "premium-midrange"]
-  },
-  {
-    "id": 104,
-    "brand": "Apple",
-    "model": "iPhone SE",
-    "category": "phone",
-    "price": 155000,
-    "currency": "LKR",
-    "ram_gb": 4,
-    "storage_gb": 128,
-    "processor": "A15 Bionic",
-    "battery_mah": 2018,
-    "camera_mp": 12,
-    "rating": 4.2,
-    "use_case": ["ios", "compact", "daily"]
-  },
-  {
-    "id": 105,
-    "brand": "OnePlus",
-    "model": "Nord CE 4 Lite",
-    "category": "phone",
-    "price": 96000,
-    "currency": "LKR",
-    "ram_gb": 8,
-    "storage_gb": 256,
-    "processor": "Snapdragon",
-    "battery_mah": 5500,
-    "camera_mp": 50,
-    "rating": 4.4,
-    "use_case": ["daily", "battery", "student"]
+    "use_case": [
+      "student",
+      "daily",
+      "premium-midrange"
+    ]
   }
 ]

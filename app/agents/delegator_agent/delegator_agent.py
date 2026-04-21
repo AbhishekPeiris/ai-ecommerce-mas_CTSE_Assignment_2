@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from app.agents.delegator.delegator_config import DELEGATOR_CONFIG
-from app.agents.delegator.delegator_prompt import DELEGATOR_SYSTEM_PROMPT
+from app.agents.delegator_agent.delegator_config import DELEGATOR_CONFIG
+from app.agents.delegator_agent.delegator_prompt import DELEGATOR_SYSTEM_PROMPT
 from app.tools.delegator.task_planner_tool import TaskPlannerTool
 from app.utils.logger import get_logger, log_agent_event
 

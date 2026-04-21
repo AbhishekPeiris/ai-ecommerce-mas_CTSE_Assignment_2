@@ -5,10 +5,10 @@ from typing import Any
 
 import yaml
 
-from app.agents.analysis.analysis_agent import AnalysisAgent
-from app.agents.coordinator.coordinator_agent import CoordinatorAgent
-from app.agents.delegator.delegator_agent import DelegatorAgent
-from app.agents.search.search_agent import SearchAgent
+from app.agents.analysis_agent import AnalysisAgent
+from app.agents.coordinator_agent import CoordinatorAgent
+from app.agents.delegator_agent import DelegatorAgent
+from app.agents.search_agent import SearchAgent
 from app.services.query_parser import QueryParser
 from app.services.validator import RequestValidator
 from app.state.state_manager import StateManager

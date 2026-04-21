@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from app.agents.coordinator.coordinator_config import COORDINATOR_CONFIG
-from app.agents.coordinator.coordinator_prompt import COORDINATOR_SYSTEM_PROMPT
+from app.agents.coordinator_agent.coordinator_config import COORDINATOR_CONFIG
+from app.agents.coordinator_agent.coordinator_prompt import COORDINATOR_SYSTEM_PROMPT
 from app.tools.coordinator.formatter_tool import FormatterTool
 from app.utils.logger import get_logger, log_agent_event
 
