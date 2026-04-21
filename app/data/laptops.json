@@ -14,11 +14,7 @@
     "battery_hours": 8,
     "rating": 4.4,
     "weight_kg": 1.63,
-    "use_case": [
-      "student",
-      "office",
-      "coding"
-    ]
+    "use_case": ["student", "office", "coding"]
   },
   {
     "id": 2,
@@ -35,10 +31,7 @@
     "battery_hours": 7,
     "rating": 4.2,
     "weight_kg": 1.69,
-    "use_case": [
-      "student",
-      "office"
-    ]
+    "use_case": ["student", "office"]
   },
   {
     "id": 3,
@@ -55,10 +48,91 @@
     "battery_hours": 8,
     "rating": 4.5,
     "weight_kg": 1.7,
-    "use_case": [
-      "coding",
-      "office",
-      "multitasking"
-    ]
+    "use_case": ["coding", "office", "multitasking"]
+  },
+  {
+    "id": 4,
+    "brand": "Acer",
+    "model": "Aspire 5",
+    "category": "laptop",
+    "price": 154000,
+    "currency": "LKR",
+    "ram_gb": 16,
+    "storage_gb": 512,
+    "storage_type": "SSD",
+    "processor": "Intel Core i5 13th Gen",
+    "display_size_inches": 15.6,
+    "battery_hours": 9,
+    "rating": 4.5,
+    "weight_kg": 1.78,
+    "use_case": ["coding", "student", "multitasking"]
+  },
+  {
+    "id": 5,
+    "brand": "Asus",
+    "model": "VivoBook 15",
+    "category": "laptop",
+    "price": 132000,
+    "currency": "LKR",
+    "ram_gb": 8,
+    "storage_gb": 512,
+    "storage_type": "SSD",
+    "processor": "AMD Ryzen 5 5500U",
+    "display_size_inches": 15.6,
+    "battery_hours": 7,
+    "rating": 4.3,
+    "weight_kg": 1.7,
+    "use_case": ["student", "office", "daily"]
+  },
+  {
+    "id": 6,
+    "brand": "MSI",
+    "model": "GF63 Thin",
+    "category": "laptop",
+    "price": 198000,
+    "currency": "LKR",
+    "ram_gb": 16,
+    "storage_gb": 512,
+    "storage_type": "SSD",
+    "processor": "Intel Core i5 12th Gen",
+    "display_size_inches": 15.6,
+    "battery_hours": 6,
+    "rating": 4.4,
+    "weight_kg": 1.86,
+    "use_case": ["gaming", "coding", "multitasking"]
+  },
+  {
+    "id": 7,
+    "brand": "Apple",
+    "model": "MacBook Air M1",
+    "category": "laptop",
+    "price": 245000,
+    "currency": "LKR",
+    "ram_gb": 8,
+    "storage_gb": 256,
+    "storage_type": "SSD",
+    "processor": "Apple M1",
+    "display_size_inches": 13.3,
+    "battery_hours": 15,
+    "rating": 4.8,
+    "weight_kg": 1.29,
+    "use_case": ["office", "content", "student"]
+  },
+  {
+    "id": 8,
+    "brand": "Lenovo",
+    "model": "Legion 5",
+    "category": "laptop",
+    "price": 289000,
+    "currency": "LKR",
+    "ram_gb": 16,
+    "storage_gb": 1024,
+    "storage_type": "SSD",
+    "processor": "AMD Ryzen 7 6800H",
+    "display_size_inches": 15.6,
+    "battery_hours": 7,
+    "rating": 4.7,
+    "weight_kg": 2.4,
+    "use_case": ["gaming", "editing", "multitasking"]
   }
 ]
