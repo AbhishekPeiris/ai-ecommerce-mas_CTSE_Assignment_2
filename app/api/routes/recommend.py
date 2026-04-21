@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 from pathlib import Path
-import yaml
 
 from app.crews.ecommerce_crew import EcommerceCrew
+from app.main import build_app_config
 
 router = APIRouter()
 
@@ -13,25 +13,17 @@ class QueryRequest(BaseModel):
 
 @router.post("/recommend")
 def recommend(req: QueryRequest):
-    config = {
-        "runtime": {"default_category": "laptop"},
-        "files": {
-            "laptops_data": "laptops.json",
-            "phones_data": "phones.json"
-        },
-        "output": {"fallback_message": "No result"},
-        "validation": {
-            "min_budget": 10000,
-            "max_budget": 1000000,
-            "allowed_categories": ["laptop", "phone"]
-        }
-    }
+    project_root = Path(__file__).resolve().parents[3]
+    config = build_app_config(project_root)
 
-    crew = EcommerceCrew(config, Path("app/data"))
+    crew = EcommerceCrew(config=config, project_root=project_root)
     result = crew.run(req.query)
+    state = result["state"]
 
     return {
-        "best_product": result["best_product"],
-        "alternatives": result["alternatives"],
-        "reasoning": result["reasoning"]
+        "response": result["response"],
+        "best_product": state.analysis_state.best_product,
+        "alternatives": state.analysis_state.alternatives,
+        "reasoning": state.analysis_state.reasoning,
+        "errors": state.errors,
     }

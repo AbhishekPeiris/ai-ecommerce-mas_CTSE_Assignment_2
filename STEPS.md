@@ -12,3 +12,9 @@ python -m scripts/load_data.py
 
 ## Step 4: Application run
 python scripts/run_app.py
+
+## Step 5: Tests run
+python scripts/run_tests.py
+
+## UI Run
+streamlit run app/ui/streamlit_app.py
