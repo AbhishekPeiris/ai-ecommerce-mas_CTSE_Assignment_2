@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Any, List
 
 from app.utils.helpers import load_json_file
@@ -44,13 +45,47 @@ class ProductSearchTool:
         return filtered
 
     def _match_keywords(self, product: dict, keywords: List[str]) -> bool:
+        meaningful_keywords = self._sanitize_keywords(keywords)
+        if not meaningful_keywords:
+            return True
+
         text = " ".join(
             [
+                str(product.get("category", "")),
                 str(product.get("brand", "")),
                 str(product.get("model", "")),
                 str(product.get("processor", "")),
+                str(product.get("storage_type", "")),
                 " ".join(product.get("use_case", [])),
             ]
         ).lower()
 
-        return any(k in text for k in keywords)
+        return any(k in text for k in meaningful_keywords)
+
+    def _sanitize_keywords(self, keywords: List[str]) -> List[str]:
+        noise_terms = {
+            "best",
+            "top",
+            "good",
+            "cheap",
+            "budget",
+            "under",
+            "below",
+            "laptop",
+            "notebook",
+            "pc",
+            "phone",
+            "mobile",
+            "smartphone",
+        }
+
+        cleaned: List[str] = []
+        for keyword in keywords:
+            token = keyword.lower().strip()
+            if not token or token in noise_terms:
+                continue
+            if re.fullmatch(r"\d+k?", token):
+                continue
+            cleaned.append(token)
+
+        return cleaned

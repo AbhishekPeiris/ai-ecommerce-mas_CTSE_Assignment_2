@@ -1,4 +1,4 @@
-from app.agents.analysis.analysis_agent import AnalysisAgent
+from app.agents.analysis_agent.analysis_agent import AnalysisAgent
 
 
 def test_analysis_agent():

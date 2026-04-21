@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 from typing import Any
 
 from app.utils.helpers import detect_category, extract_budget, normalize_text
@@ -46,6 +47,37 @@ class QueryParser:
         NOTE: This can later be replaced with NLP or embeddings.
         """
         tokens = text.split()
-        stop_words = {"a", "the", "for", "with", "and", "or", "under"}
+        stop_words = {
+            "a",
+            "an",
+            "the",
+            "for",
+            "with",
+            "and",
+            "or",
+            "under",
+            "below",
+            "best",
+            "top",
+            "good",
+            "cheap",
+            "budget",
+            "find",
+            "show",
+            "need",
+            "want",
+            "me",
+        }
+        category_terms = {"laptop", "notebook", "pc", "phone", "mobile", "smartphone"}
 
-        return [t for t in tokens if t not in stop_words and len(t) > 2]
+        cleaned: list[str] = []
+        for token in tokens:
+            if token in stop_words or token in category_terms:
+                continue
+            if re.fullmatch(r"\d+k?", token):
+                continue
+            if len(token) <= 2:
+                continue
+            cleaned.append(token)
+
+        return cleaned
