@@ -1,0 +1,31 @@
+app:
+  name: "AI Smart E-Commerce MAS"
+  version: "1.0.0"
+  environment: "development"
+  debug: true
+
+paths:
+  data_dir: "app/data"
+  logs_dir: "logs"
+
+files:
+  laptops_data: "app/data/laptops.json"
+  phones_data: "app/data/phones.json"
+
+runtime:
+  default_category: "laptop"
+  max_results: 5
+  enable_logging: true
+  enable_observability: true
+
+output:
+  include_reasoning_summary: true
+  include_top_alternatives: true
+  fallback_message: "Sorry, I could not find a suitable recommendation for your request."
+
+validation:
+  min_budget: 50000
+  max_budget: 1000000
+  allowed_categories:
+    - laptop
+    - phone
