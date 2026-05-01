@@ -195,17 +195,19 @@ def _start_new_chat() -> None:
         st.session_state.active_chat_id = new_chat["id"]
 
 
-def _product_image(product: dict[str, Any] | None) -> str:
-        if not product:
-                return "https://picsum.photos/seed/product-placeholder/900/600"
+def _product_image(product: dict[str, Any] | None) -> str | None:
+    if not product:
+        return None
 
-        image_url = product.get("image_url")
-        if isinstance(image_url, str) and image_url.strip():
-                return image_url
+    image_url = product.get("image_url")
+    if isinstance(image_url, str) and image_url.strip():
+        return image_url
 
-        brand = str(product.get("brand", "product")).strip().lower().replace(" ", "-")
-        model = str(product.get("model", "item")).strip().lower().replace(" ", "-")
-        return f"https://picsum.photos/seed/{brand}-{model}/900/600"
+    image = product.get("image")
+    if isinstance(image, str) and image.strip():
+        return image
+
+    return None
 
 
 def _run_local_recommendation(query: str) -> dict[str, Any]:
@@ -249,7 +251,11 @@ def _render_product_card(product: dict[str, Any] | None, heading: str) -> None:
 
     col_image, col_info = st.columns([1, 1.35])
     with col_image:
-        st.image(_product_image(product), use_container_width=True)
+        image_url = _product_image(product)
+        if image_url:
+            st.image(image_url, use_container_width=True)
+        else:
+            st.info("Image not available for this product.")
 
     with col_info:
         st.markdown("<div class='product-card'>", unsafe_allow_html=True)
@@ -333,9 +339,6 @@ st.markdown(_get_theme_css(), unsafe_allow_html=True)
 with st.sidebar:
     st.markdown("## 🛍️ ShopGenius AI")
     st.caption("Find the best laptops and phones in seconds.")
-
-    # theme = st.selectbox("Theme", options=["Dark", "Light"], index=0 if st.session_state.theme_mode == "Dark" else 1)
-    # st.session_state.theme_mode = theme
 
     if st.button("＋ Start New Chat", use_container_width=True):
         _start_new_chat()
