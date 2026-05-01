@@ -58,6 +58,22 @@ class ProductSearchTool:
             logger.info("Found %d matching products after relaxing budget", len(relaxed))
             return relaxed[:5]
 
+        # If no products found and keywords were provided, relax keyword filter
+        if not filtered and keywords:
+            logger.info("No products matched keywords=%s — relaxing keyword filter", keywords)
+            relaxed: List[dict[str, Any]] = []
+            for product in products:
+                if category and product.get("category") != category:
+                    continue
+                if budget and product.get("price", 0) > budget:
+                    continue
+                relaxed.append(product)
+
+            # sort by price ascending and return top 5
+            relaxed.sort(key=lambda p: p.get("price", float("inf")))
+            logger.info("Found %d matching products after relaxing keywords", len(relaxed))
+            return relaxed[:5]
+
         logger.info("Found %d matching products", len(filtered))
         return filtered
 
