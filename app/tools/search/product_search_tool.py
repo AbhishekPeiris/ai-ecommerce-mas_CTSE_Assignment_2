@@ -41,6 +41,23 @@ class ProductSearchTool:
 
             filtered.append(product)
 
+        # If no products found using the budget filter, relax the budget
+        # constraint and return the cheapest matching items (up to 5).
+        if not filtered and budget is not None:
+            logger.info("No products matched budget=%s — relaxing budget filter", budget)
+            relaxed: List[dict[str, Any]] = []
+            for product in products:
+                if category and product.get("category") != category:
+                    continue
+                if keywords and not self._match_keywords(product, keywords):
+                    continue
+                relaxed.append(product)
+
+            # sort by price ascending and return top 5
+            relaxed.sort(key=lambda p: p.get("price", float("inf")))
+            logger.info("Found %d matching products after relaxing budget", len(relaxed))
+            return relaxed[:5]
+
         logger.info("Found %d matching products", len(filtered))
         return filtered
 
