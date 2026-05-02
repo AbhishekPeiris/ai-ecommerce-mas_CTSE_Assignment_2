@@ -41,9 +41,12 @@ def main() -> int:
     try:
         app_main()
         return 0
+    
     except KeyboardInterrupt:
         print("\nExecution interrupted by user.")
         return 130
+    
+    
     except Exception as exc:  # pylint: disable=broad-except
         print(f"Application failed: {exc}")
         return 1

@@ -26,6 +26,7 @@ class RequestValidator:
         if budget > max_budget:
             raise ValidationError(f"Budget too high. Maximum is {max_budget}")
 
+
     def validate_category(self, category: str | None) -> None:
         if category is None:
             return
