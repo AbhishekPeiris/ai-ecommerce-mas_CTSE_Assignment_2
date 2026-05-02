@@ -18,7 +18,7 @@ from app.main import build_app_config
 
 st.set_page_config(page_title="AI E-Commerce Assistant")
 
-QUICK_QUESTIONS = [
+QUICK_QUESTIONS =  [
         "Best laptop under 150000",
         "Student phone under 100000",
         "Gaming laptop under 220000",
