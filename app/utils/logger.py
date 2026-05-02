@@ -72,7 +72,6 @@ def setup_logging() -> None:
     logging.config.dictConfig(logging_config)
     _LOGGING_INITIALIZED = True
 
-
 def get_logger(name: str) -> logging.Logger:
     """
     Return a configured logger instance.
