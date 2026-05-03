@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-
+# This module defines the ModelConfig dataclass and a function to read model configuration from environment variables for the local Ollama model used in the MAS application.
 @dataclass(frozen=True)
 class ModelConfig:
     """
