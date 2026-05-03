@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+# System prompt used by the Analysis Agent
+# This defines the behavior, responsibilities, and constraints of the agent
 ANALYSIS_SYSTEM_PROMPT = """
 You are the Analysis Agent in an AI Smart E-Commerce Decision System.
 
