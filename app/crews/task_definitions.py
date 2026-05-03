@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-
+# This module defines task definitions for the MAS application, including parsing user queries, searching products, and analyzing results to select the best product recommendation.
 @dataclass
 class Task:
     name: str

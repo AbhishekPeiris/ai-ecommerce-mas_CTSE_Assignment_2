@@ -6,7 +6,7 @@ from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-
+# This module defines the FormatterTool, which formats the final output for user display based on the analysis results.
 class FormatterTool:
     """
     Formats the final output for user display.

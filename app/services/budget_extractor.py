@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-
+# This module defines the BudgetExtractor, which extracts and normalizes budget constraints from user input for use in product recommendation analysis.
 @dataclass
 class BudgetResult:
     min_budget: int | None
