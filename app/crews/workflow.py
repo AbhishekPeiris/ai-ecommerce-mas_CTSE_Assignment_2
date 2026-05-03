@@ -60,7 +60,7 @@ class Workflow:
             self._analyze_products(state_manager)
             return self._finalize_response(state_manager)
 
-        except Exception as exc:  # pylint: disable=broad-except
+        except Exception as exc:  # pylint:  disable=broad-except 
             logger.exception("Workflow execution failed: %s", exc)
             state_manager.add_error(str(exc))
             return self._fallback_response()

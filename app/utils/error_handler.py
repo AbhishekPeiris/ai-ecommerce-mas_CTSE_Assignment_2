@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-
+# This module defines custom exceptions and error handling utilities for the MAS application.
 class AppError(Exception):
     """
     Base application exception.
