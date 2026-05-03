@@ -18,6 +18,7 @@ class TaskPlannerTool:
         tasks = []
 
         if query:
+            # Current planner is deterministic; swap with query-aware logic later.
             tasks.append("parse_query")
             tasks.append("validate_input")
             tasks.append("search_products")
