@@ -60,6 +60,7 @@ class Workflow:
             self._analyze_products(state_manager)
             return self._finalize_response(state_manager)
 
+        # Catch-all ensures we always return a safe fallback to the caller.
         except Exception as exc:  # pylint:  disable=broad-except 
             logger.exception("Workflow execution failed: %s", exc)
             state_manager.add_error(str(exc))
@@ -96,6 +97,7 @@ class Workflow:
         query = state_manager.state.user_query.query
         plan = self.delegator_agent.create_plan(query)
 
+        # The plan is logged for traceability; we can persist it in state later if needed.
         details = f"Generated task plan: {plan}"
         log_agent_event("Workflow", "plan_completed", details)
 

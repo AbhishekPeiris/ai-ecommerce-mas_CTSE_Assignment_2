@@ -41,6 +41,8 @@ class ProductSearchTool:
 
             filtered.append(product)
 
+        # Fallback order is intentional: relax budget first, then keywords,
+        # so we prefer relevant but slightly over-budget options first.
         # If no products found using the budget filter, relax the budget
         # constraint and return the cheapest matching items (up to 5).
         if not filtered and budget is not None:

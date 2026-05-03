@@ -120,6 +120,21 @@ Fully local system (no API keys required)
 Designed for academic MAS assignment
 Clean modular architecture
 
+## Contributing
+
+Contributions are welcome. Keep pull requests focused and easy to review.
+
+1. Fork the repository and create a feature branch.
+2. Make small, targeted changes with clear commit messages.
+3. Run tests before opening a pull request.
+4. Describe what changed and how you validated it.
+
+Quick local validation:
+
+```bash
+python scripts/run_tests.py
+```
+
 
 ---
 
