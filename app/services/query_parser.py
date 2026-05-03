@@ -15,7 +15,7 @@ class ParsedQuery:
     budget: int | None
     keywords: list[str]
 
-
+# This module defines the QueryParser, which parses user input into structured query components.
 class QueryParser:
     """
     Parses user input into structured query components.
