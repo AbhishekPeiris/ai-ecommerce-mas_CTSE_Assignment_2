@@ -5,7 +5,7 @@ DEFAULT_CATEGORY = "laptop"
 DEFAULT_MAX_RESULTS = 5
 
 SUPPORTED_CATEGORIES = {"laptop", "phone"}
-
+# These keywords are used by the DelegatorAgent to infer user intent and constraints from the query.
 PRICE_KEYWORDS = {
     "budget": ["budget", "cheap", "affordable", "low price", "under"],
     "premium": ["premium", "best", "high-end", "powerful"],

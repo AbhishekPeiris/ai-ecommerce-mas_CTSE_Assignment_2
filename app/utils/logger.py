@@ -8,7 +8,7 @@ from app.utils.constants import ERROR_LOG_FILE, LOG_DIR, SYSTEM_LOG_FILE
 
 _LOGGING_INITIALIZED = False
 
-
+# This module sets up structured logging for the MAS application, including separate logs for system events and errors.
 def _ensure_log_files_exist() -> None:
     """
     Ensure the logs directory and files exist.

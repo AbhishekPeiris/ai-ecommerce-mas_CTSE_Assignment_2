@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-
+# This module provides general helper functions for file handling, text processing, and data normalization.
 def ensure_directory(path: str | Path) -> Path:
     """
     Ensure a directory exists.
