@@ -15,19 +15,31 @@ class StateManager:
         self.state = state
 
     def update_query(self, category: str | None, budget: int | None, keywords: list[str]) -> None:
+        """
+        Update the user query state with category, budget, and keywords.
+        """
         logger.info("Updating query state")
         self.state.user_query.category = category
         self.state.user_query.budget = budget
         self.state.user_query.keywords = keywords
 
     def update_products(self, products: list[dict]) -> None:
+        """
+        Update the product state with a list of search results.
+        """
         logger.info("Updating product state with %d items", len(products))
+        """
+        Update the analysis state with the best product selection and alternatives.
+        """
         self.state.product_state.products = products
 
     def update_analysis(self, best_product: dict, alternatives: list[dict], reasoning: str) -> None:
         logger.info("Updating analysis state")
         self.state.analysis_state.best_product = best_product
         self.state.analysis_state.alternatives = alternatives
+        """
+        Add an error message to the global state error list.
+        """
         self.state.analysis_state.reasoning = reasoning
 
     def add_error(self, message: str) -> None:

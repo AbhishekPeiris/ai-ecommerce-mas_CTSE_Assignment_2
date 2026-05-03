@@ -10,6 +10,7 @@ from app.utils.helpers import save_json_file
 def main() -> int:
     """
     Generate default dataset files for the app.
+    This script initializes the local product databases with sample laptop and phone data.
     """
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "app" / "data"

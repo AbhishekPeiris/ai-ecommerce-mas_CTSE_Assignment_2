@@ -18,6 +18,7 @@ from app.main import build_app_config
 
 st.set_page_config(page_title="AI E-Commerce Assistant")
 # This Streamlit app provides a user interface for the AI E-Commerce MAS. Users can ask for laptop and phone recommendations in natural language, and the app will display ranked product recommendations with visual cards and detailed reasoning.
+# Web UI Interface for the AI E-Commerce Recommendation System
 QUICK_QUESTIONS =  [
         "Best laptop under 150000",
         "Student phone under 100000",
