@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
+
+# Importing configuration and prompt specific to the Analysis Agent
 from app.agents.analysis_agent.analysis_config import ANALYSIS_CONFIG
 from app.agents.analysis_agent.analysis_prompt import ANALYSIS_SYSTEM_PROMPT
 from app.tools.analysis.comparison_tool import ComparisonTool
@@ -34,7 +36,14 @@ class AnalysisAgent:
         Returns:
             tuple: (best_product, alternatives, reasoning)
         """
+        # Log the start of analysis with number of products received
         log_agent_event(self.name, "analysis_started", f"Comparing {len(products)} products")
+
+        # Perform comparison using the dedicated tool
         best_product, alternatives, reasoning = self.comparison_tool.compare(products)
+
+        # Log successful completion of analysis step
         log_agent_event(self.name, "analysis_completed", "Best product selected successfully")
+
+        # Return structured result to next stage (Coordinator Agent)
         return best_product, alternatives, reasoning
